@@ -1,0 +1,36 @@
+<%- include("partials/header"); -%>
+
+<% if(errMessage === "error"){ %>
+  <div class="alert alert-warning d-flex align-items-center" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="5" height="5" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <div>
+    <%= msg %>
+  </div>
+  </div>
+
+<% } %>
+
+
+    <h1>Compose</h1>
+    <form action="/compose" method="post">
+      <div class="form-group">
+
+        <% if(errMessage === "error" || errMessage === "noError"){ %>
+        <label>Title</label>
+        <input class="form-control" type="text" name="postTitle" value="<%= title %>" required>
+        <label>Post</label>
+        <textarea class="form-control" name="postBody" rows="5" cols="30"><%= post %></textarea>
+
+        <% } %>
+
+
+      </div>
+      <button class="btn btn-primary" type="submit" name="submitButton" value="publish">Publish</button>
+      <button class="btn btn-info" type="submit" name="submitButton" value="search">Search</button>
+      <button class="btn btn-success" type="submit" name="submitButton" value="update">Update</button>
+      <button class="btn btn-danger" type="submit" name="submitButton" value="delete">Delete</button>
+    </form>
+
+
+
+<%- include("partials/footer"); -%>
